@@ -10,6 +10,23 @@ package neuralnetwork;
  *
  * @author 1907riseyasenga
  */
-public class Input {
+public class Input implements Node{
+    private double value;
     
+    public Input(){
+        value = 0.0;
+    }
+    
+    public Input(double value){
+        this. value = value;
+    }
+    
+    @Override
+    public double getOutput(){
+        return value;
+    }
+    
+    public void setValue(double value){
+        this.value = value;
+    }    
 }
