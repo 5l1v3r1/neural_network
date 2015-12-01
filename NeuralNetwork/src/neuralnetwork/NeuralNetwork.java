@@ -6,12 +6,16 @@
 
 package neuralnetwork;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author 1907riseyasenga
  */
 public class NeuralNetwork {
 
+    private ArrayList<Input> inputs;
+    private ArrayList<ArrayList<Neuron>> neuronLayers;
     /**
      * @param args the command line arguments
      */
