@@ -10,7 +10,7 @@ package neuralnetwork;
  *
  * @author 1907riseyasenga
  */
-public interface Node {
+public abstract class Node {
     
-    public double getOutput();
+    public abstract double getOutput();
 }

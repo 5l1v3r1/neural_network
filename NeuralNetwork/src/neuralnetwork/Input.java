@@ -10,7 +10,7 @@ package neuralnetwork;
  *
  * @author 1907riseyasenga
  */
-public class Input implements Node{
+public class Input extends Node{
     private double value;
     
     public Input(){

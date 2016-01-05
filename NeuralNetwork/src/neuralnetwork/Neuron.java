@@ -12,11 +12,12 @@ import java.util.ArrayList;
  *
  * @author 1907riseyasenga
  */
-public class Neuron implements Node{
+public class Neuron extends Node{
     private static final double SIGMOID_PARAMETER = 1.0;
     private final ArrayList<Node> inputs;
     private final ArrayList<Double> weights;
     private final double threshold;
+//    private final double lastWeight;
     private Double output;
     
     Neuron(){
