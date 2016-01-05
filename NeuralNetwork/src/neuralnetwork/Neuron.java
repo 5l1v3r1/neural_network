@@ -14,52 +14,39 @@ import java.util.ArrayList;
  */
 public class Neuron extends Node{
     private static final double SIGMOID_PARAMETER = 1.0;
-    private final ArrayList<Node> inputs;
-    private final ArrayList<Double> weights;
-    private final double threshold;
-//    private final double lastWeight;
+    private final ArrayList<Pair<Node,Double>> weightedInputs;
+    private Pair<Input,Double> weightedThreshold;
     private Double output;
     
     Neuron(){
         
-        inputs = new ArrayList();
-        weights = new ArrayList();
-        threshold = -1.0;
+        weightedInputs = new ArrayList<>();
+        weightedThreshold = null;
         output = 0.0;
-    }
-    
-    public boolean addInput(Node input){
-        
-        return inputs.add(input);
-    }
-    
-    public boolean addWeight(double weight){
-        
-        return weights.add(weight);
     }
     
     public boolean addInputAndWeight(Node input, double weight){
          
-        return addInput(input) && addWeight(weight);
+        return weightedInputs.add(new Pair<>(input, weight));
     }
-     
+    
+    public boolean setThresholdAndWeight(Input input, double weight){
+        
+        weightedThreshold = new Pair<>(input, weight);
+        return weightedThreshold != null;
+    }
+    
     @Override
     public double getOutput(){
      
         return output;
     }
     
-    public double computeOutPut(){
+    public void computeOutPut(){
         
-        if(weights.size() - inputs.size() != 1){
-            System.err.println("The number of weights should be equal to "
-                    + "the number of inputs plus 1!");
-            System.exit(1);
-        }
-        
-        output = sigmoid(computeActivation() + getLastWeight() * threshold);
-        
-        return output;
+        output = sigmoid(computeActivation() + 
+                weightedThreshold.getFirst().getOutput() *
+                        weightedThreshold.getSecond());
     }
     
     private double sigmoid(double x){
@@ -70,15 +57,13 @@ public class Neuron extends Node{
         
         double activation = 0.0;
         
-        for(int i = 0; i < inputs.size(); ++i){
-            activation += inputs.get(i).getOutput() * weights.get(i);
+        for(int i = 0; i < weightedInputs.size(); ++i){
+            activation += weightedInputs.get(i).getFirst().getOutput() * 
+                    weightedInputs.get(i).getSecond();
         } 
         
         return activation;
     }
     
-    private double getLastWeight(){
-        
-        return weights.get(weights.size()-1);
-    }   
+    
 }

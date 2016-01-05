@@ -40,7 +40,7 @@ public class NeuralNetwork {
                 neuron.addInputAndWeight(inputs.get(j), Util.randomDouble());
             }
             
-            neuron.addWeight(Util.randomDouble());
+            neuron.setThresholdAndWeight(new Input(-1.0), Util.randomDouble());
             firstNeuronLayer.add(neuron);
         }
         
@@ -66,7 +66,7 @@ public class NeuralNetwork {
                         Util.randomDouble());
             }
 
-            neuron.addWeight(Util.randomDouble());
+            neuron.setThresholdAndWeight(new Input(-1.0), Util.randomDouble());
             newNeuronLayer.add(neuron);
         }
 
