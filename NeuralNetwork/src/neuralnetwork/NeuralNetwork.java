@@ -52,7 +52,7 @@ public class NeuralNetwork {
             int nNeurons){
         
         ArrayList<Neuron> newNeuronLayer;
-        newNeuronLayer = new ArrayList();
+        newNeuronLayer = new ArrayList<>();
         ArrayList<Neuron> topNeuronLayer = 
                 neuronLayers.get(neuronLayers.size()-1);
         int nInputs = topNeuronLayer.size();
@@ -84,7 +84,7 @@ public class NeuralNetwork {
             return res;
         }
         
-        res.neuronLayers = new ArrayList();
+        res.neuronLayers = new ArrayList<>();
         res.neuronLayers.add(createFirstNeuronLayer(
                 res.inputs, 
                 nNeuronsForEachLayer.get(0)));
@@ -98,13 +98,8 @@ public class NeuralNetwork {
     }
     
     public NeuralNetwork(){
-        inputs = new ArrayList();
-        neuronLayers = new ArrayList();
-    }
-    
-    public boolean addInput(Input input){
-        
-        return inputs.add(input);
+        inputs = new ArrayList<>();
+        neuronLayers = new ArrayList<>();
     }
     
     public boolean addNeuronLayer(ArrayList<Neuron> neuronLayer){
@@ -136,17 +131,14 @@ public class NeuralNetwork {
         
         return outputs;
     }
-    
-    /*public ArrayList<Double>*/
-            
-    /*public */
+   
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
         
-        ArrayList<Integer> nNeuronsPerLayer = new ArrayList();
+        ArrayList<Integer> nNeuronsPerLayer = new ArrayList<>();
         int nLayers = Util.nextInt(20) + 80;
         System.out.println("nLayers = " + nLayers);
         
